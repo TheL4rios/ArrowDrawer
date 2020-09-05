@@ -1,0 +1,17 @@
+div.square {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+div#div1 {
+    top: 100px;
+    left: 500px;
+    background-color: red;
+}
+
+div#div2 {
+    top: 400px;
+    left: 700px;
+    background-color: brown;
+}
