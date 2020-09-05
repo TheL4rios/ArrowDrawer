@@ -19,3 +19,5 @@ Or to use the function created called **createArrow**, this function recive some
 * to -> this is to identificate to which element will be connected.
 * container -> this is the container to that will be added. 
 * color -> this is to put a color (default is black).
+
+**from and to** are id's.
