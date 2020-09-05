@@ -9,25 +9,70 @@ document.addEventListener('DOMContentLoaded', function() {
         let angle = getAngle(coords);
 
         const line = document.getElementById('line-' + arrow.id);
-        line.style.width = (coords[0] - 2) + 'px';
-        arrow.style.width = (coords[0] - 2) + 'px';
+        line.style.width = (coords[0] - 10) + 'px';
+        arrow.style.width = (coords[0] - 10) + 'px';
 
         if (major(fromElement, toElement)) {
             angle += 180;  
         } 
 
-        arrow.style.left = coords[1][0] + 'px';
-        arrow.style.top = coords[1][1] + 'px';
-        arrow.style.transform = 'rotate(' + angle + 'deg)';
-        arrow.style.transformOrigin = '0 0';
+        const position = sameHeight(fromElement, toElement);
+        if (position) {
+            if (position[0] === 1) { // is same in height
+                coords[1][1] = position[1];
+            } else if (position[0] === 2) { // is same in width
+                coords[1][0] = position[1];
+            }
 
-        if (color) {
-            line.style.borderColor = color;
-            document.getElementById('arrow-' + arrow.id).style.borderLeft = '10px solid ' + color;
+            arrow.style.left = coords[1][0] + 'px';
+            arrow.style.top = coords[1][1] + 'px';
+            arrow.style.transform = 'rotate(' + angle + 'deg)';
+            arrow.style.transformOrigin = '0 0';
+
+            if (color) {
+                line.style.borderColor = color;
+                document.getElementById('arrow-' + arrow.id).style.borderLeft = '10px solid ' + color;
+            }
+
+            arrow.style.visibility = 'visible';
+        } else {
+            console.log('Error: The boxes ' + fromElement.id + ' and ' + toElement.id + ' are over.');
         }
 
         // console.log(angle);
         // console.log(coords);
+    }
+
+    function sameHeight(firstElement, secondElement) {
+        const first = firstElement.getBoundingClientRect();
+        const second = secondElement.getBoundingClientRect();
+
+        const firstWidth = first.right - first.left;
+        const firstHeight = first.bottom - first.top;
+        const secondWidth = second.right - second.left;
+        const secondHeight = second.bottom - second.top;
+
+        if (first.y >= second.y - firstHeight && first.y <= second.y + firstHeight) {
+            if(first.x > second.x + secondWidth || first.x < second.x) {
+                const distance = first.y + firstHeight - second.y;
+                const y = second.y + distance / 2;
+                return [1, y];
+            } else {
+                return undefined;
+            }
+        }
+
+        if (first.x >= second.x - firstWidth && first.x <= second.x + firstWidth) {
+            if(first.y > second.y + secondHeight || first.y < second.y) {
+                const distance = first.x + firstWidth - second.x;
+                const x = second.x + distance / 2;
+                return [2, x];
+            } else {
+                return undefined;
+            }
+        }
+
+        return -1;
     }
 
     function recalculateAll() {

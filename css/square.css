@@ -27,3 +27,15 @@ div#div4 {
     left: 200px;
     background-color: aqua;
 }
+
+div#div5 {
+    top: 250px;
+    left: 400px;
+    background-color: green;
+}
+
+div#div6 {
+    top: 450px;
+    left: 250px;
+    background-color: #252525;
+}
