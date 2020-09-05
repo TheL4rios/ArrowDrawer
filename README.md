@@ -6,6 +6,10 @@ This is a library to draw arrows without svg or canvas.
 The arrows they look like this.
 ![Screenshot](https://github.com/TheL4rios/ArrowDrawer/blob/master/screenshots/presentation.png)
 
+you only need the archives
+* arrow.css
+* ArrowDrawer.js
+
 To create an arrow just you may create a div-container with this structure
 ![Screenshot](https://github.com/TheL4rios/ArrowDrawer/blob/master/screenshots/example.png)
 
