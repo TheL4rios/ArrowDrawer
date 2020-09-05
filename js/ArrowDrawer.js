@@ -1,3 +1,23 @@
+function createArrow(id, from, to, container, color = 'black') {
+    const divContainer = document.createElement('div');
+    divContainer.className = 'arrow-container';
+    divContainer.id = id;
+    divContainer.dataset.from = from;
+    divContainer.dataset.to = to;
+    divContainer.dataset.color = color;
+
+    const line = document.createElement('div');
+    line.id = 'line-' + divContainer.id;
+    line.className = 'line';
+    const arrow = document.createElement('div');
+    arrow.id = 'arrow-' + divContainer.id;
+    arrow.className = 'arrow';
+
+    divContainer.appendChild(line);
+    divContainer.appendChild(arrow);
+    container.appendChild(divContainer);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     recalculateAll();
 
@@ -172,26 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getDistance(x1, y1, x2, y2) {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    }
-
-    function createArrow(id, from, to, container, color = 'black') {
-        const divContainer = document.createElement('div');
-        divContainer.className = 'arrow-container';
-        divContainer.id = id;
-        divContainer.dataset.from = from;
-        divContainer.dataset.to = to;
-        divContainer.dataset.color = color;
-
-        const line = document.createElement('div');
-        line.id = 'line-' + divContainer.id;
-        line.className = 'line';
-        const arrow = document.createElement('div');
-        arrow.id = 'arrow-' + divContainer.id;
-        arrow.className = 'arrow';
-
-        divContainer.appendChild(line);
-        divContainer.appendChild(arrow);
-        container.appendChild(divContainer);
     }
 
     /* --- Observer --- */
