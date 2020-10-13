@@ -1,7 +1,7 @@
 # ArrowDrawer
 **Sorry for my english**
 
-This is a library to draw arrows without svg or canvas.
+This is a library to draw arrows without canvas.
 
 The arrows they look like this.
 ![Screenshot](https://github.com/TheL4rios/ArrowDrawer/blob/master/screenshots/presentation.png)
